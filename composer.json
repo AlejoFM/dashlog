@@ -10,7 +10,7 @@
         }
     ],
     "description": "A request monitoring and logging package for Laravel",
-    "keywords": ["laravel", "framework", "logging", "monitoring", "request"],
+    "keywords": ["laravel", "logging", "monitoring", "dashboard"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DashLog\\": "src/DashLog/"
+            "AledDev\\DashLog\\": "src/"
         }
     },
     "autoload-dev": {
@@ -59,7 +59,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
+                "AledDev\\DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
             ]
         }
     },
@@ -72,6 +72,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
