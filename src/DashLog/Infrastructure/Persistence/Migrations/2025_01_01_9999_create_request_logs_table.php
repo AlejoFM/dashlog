@@ -19,11 +19,11 @@ return new class extends Migration
             $table->integer('status_code');
             $table->json('request')->nullable();
             $table->json('response')->nullable();
-            $table->json('headers')->nullable();
-            $table->json('cookies')->nullable();
-            $table->json('session')->nullable();
-            $table->json('stack_trace')->nullable();
-            $table->text('user_agent')->nullable();
+            $table->longText('headers')->nullable();
+            $table->longText('cookies')->nullable();
+            $table->longText('session')->nullable();
+            $table->longText('stack_trace')->nullable();
+            $table->longText('user_agent')->nullable();
             $table->timestamps();
             $table->index('created_at');
             $table->index('status_code');
