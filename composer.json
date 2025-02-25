@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AledDev\\DashLog\\": "src/"
+            "AledDev\\DashLog\\": "src/DashLog/"
         }
     },
     "autoload-dev": {
@@ -59,7 +59,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AledDev\\DashLog\\src\\DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
+                "AledDev\\DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
             ]
         }
     },
