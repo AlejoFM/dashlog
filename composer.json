@@ -59,7 +59,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AledDev\\DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
+                "AledDev\\DashLog\\src\\DashLog\\Infrastructure\\Providers\\DashLogServiceProvider"
             ]
         }
     },
