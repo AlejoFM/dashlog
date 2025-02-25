@@ -53,7 +53,8 @@ class MongoDBRequestLogRepository implements RequestLogRepositoryInterface
             $log['cookies'],    
             $log['session'],
             $log['stack_trace'],
-            new \DateTimeImmutable($log['created_at'])
+            $log['user_agent'],
+            $log['created_at']
         ) : null;
     }
 

@@ -24,12 +24,13 @@ class MySQLRequestLogRepository implements RequestLogRepositoryInterface
             'user_id' => $log->getUserId(),
             'duration' => $log->getDuration(),
             'status_code' => $log->getStatus(),
-            'request_data' => json_encode($log->getRequestData()),
-            'response_data' => json_encode($log->getResponseData()),
+            'request' => json_encode($log->getRequestData()),
+            'response' => json_encode($log->getResponseData()),
             'headers' => json_encode($log->getHeaders()),
             'cookies' => json_encode($log->getCookies()),
             'session' => json_encode($log->getSession()),
             'stack_trace' => json_encode($log->getStackTrace()),
+            'user_agent' => $log->getUserAgent(),
             'created_at' => $log->getCreatedAt()
         ]);
     }
@@ -47,13 +48,14 @@ class MySQLRequestLogRepository implements RequestLogRepositoryInterface
             $log->user_id,
             $log->duration,
             $log->status_code,
-            json_decode($log->request_data, true),
-            json_decode($log->response_data, true),
+            json_decode($log->request, true),
+            json_decode($log->response, true),
             json_decode($log->headers, true),
             json_decode($log->cookies, true),
             json_decode($log->session, true),
             json_decode($log->stack_trace, true),
-            new \DateTimeImmutable($log->created_at)
+            new \DateTimeImmutable($log->created_at),
+            $log->user_agent
         );
     }
 

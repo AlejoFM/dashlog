@@ -9,13 +9,28 @@ class RequestLogModel extends Model
     protected $table = 'request_logs';
     
     protected $fillable = [
+        'id',
         'method',
         'url',
+        'headers',
+        'body',
         'ip',
-        'user_id',
+        'status_code',
+        'response_headers',
+        'response_body',
         'duration',
-        'status',
-        'request_data',
-        'response_data'
+        'cookies',
+        'session',
+        'stack_trace',
+        'user_agent',
+        'user_id',
+        'created_at',
+        'updated_at'
     ];
+
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    public $timestamps = true;
+    
 } 

@@ -65,6 +65,7 @@ class RedisRequestLogRepository implements RequestLogRepositoryInterface
             json_decode($data['session'], true),
             json_decode($data['stack_trace'], true),
             new \DateTimeImmutable($data['created_at']),
+            $data['user_agent'],
         );
     }
 

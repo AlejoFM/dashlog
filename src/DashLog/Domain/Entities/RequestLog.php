@@ -16,13 +16,14 @@ class RequestLog
         private readonly ?string $userId,
         private readonly ?float $duration,
         private readonly RequestStatus $status,
-        private readonly array $requestData,
-        private readonly array $responseData,
+        private readonly ?array $requestData,
+        private readonly ?array $responseData,
         private readonly array $headers,
         private readonly array $cookies,
         private readonly array $session,
-        private readonly array $stackTrace,
-        private readonly DateTimeImmutable $createdAt
+        private readonly ?array $stackTrace,
+        private readonly DateTimeImmutable $createdAt,
+        private readonly ?string $userAgent
     ) {}
 
     // Getters
@@ -61,12 +62,12 @@ class RequestLog
         return $this->status;
     }
 
-    public function getRequestData(): array
+    public function getRequestData(): ?array
     {
         return $this->requestData;
     }
 
-    public function getResponseData(): array
+    public function getResponseData(): ?array
     {
         return $this->responseData;
     }
@@ -90,8 +91,13 @@ class RequestLog
         return $this->session;
     }
 
-    public function getStackTrace(): array
+    public function getStackTrace(): ?array
     {
         return $this->stackTrace;
+    }
+
+    public function getUserAgent(): ?string
+    {
+        return $this->userAgent;
     }
 }

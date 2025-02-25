@@ -4,11 +4,11 @@ namespace DashLog\Domain\ValueObjects;
 
 enum RequestStatus: string
 {
-    case SUCCESS = 'success';
+    case SUCCESS = '200';
     case ERROR = 'error';
-    case REDIRECT = 'redirect';
-    case CLIENT_ERROR = 'client_error';
-    case SERVER_ERROR = 'server_error';
+    case REDIRECT = '300';
+    case CLIENT_ERROR = '400';
+    case SERVER_ERROR = '500';
 
     public static function fromStatusCode(int $statusCode): self
     {

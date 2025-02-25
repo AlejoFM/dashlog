@@ -8,25 +8,37 @@ use DashLog\Domain\ValueObjects\RequestMethod;
 use DashLog\Domain\ValueObjects\RequestStatus;
 use DashLog\Infrastructure\Persistence\Eloquent\Models\RequestLogModel;
 use DateTimeImmutable;
+use Illuminate\Support\Facades\Log;
 
 class EloquentRequestLogRepository implements RequestLogRepositoryInterface
 {
     public function save(RequestLog $log): void
     {
-        RequestLogModel::create([
-            'method' => $log->getMethod()->value,
-            'url' => $log->getUrl(),
-            'ip' => $log->getIp(),
-            'user_id' => $log->getUserId(),
-            'duration' => $log->getDuration(),
-            'status' => $log->getStatus()->value,
-            'request_data' => $log->getRequestData(),
-            'response_data' => $log->getResponseData(),
-            'headers' => $log->getHeaders(),
-            'cookies' => $log->getCookies(),
-            'session' => $log->getSession(),
-            'stack_trace' => $log->getStackTrace(),
-        ]);
+        try {
+
+            RequestLogModel::create([
+                'id' => $log->getId(),
+                'method' => $log->getMethod()->value,
+                'url' => $log->getUrl(),
+                'ip' => $log->getIp(),
+                'user_id' => $log->getUserId(),
+                'duration' => $log->getDuration(),
+                'status_code' => $log->getStatus()->value,
+                'request_data' => json_encode($log->getRequestData()),
+                'response_data' => json_encode($log->getResponseData()),
+                'headers' => json_encode($log->getHeaders()),
+                'cookies' => json_encode($log->getCookies()),
+                'session' => json_encode($log->getSession()),
+                'stack_trace' => json_encode($log->getStackTrace()),
+                'user_agent' => $log->getUserAgent(),
+                'created_at' => $log->getCreatedAt()->format('Y-m-d H:i:s'),
+                'updated_at' => $log->getCreatedAt()->format('Y-m-d H:i:s')
+            ]);
+
+        } catch (\Exception $e) {
+
+            throw $e;
+        }
     }
 
     public function findById(string $id): ?RequestLog
@@ -43,12 +55,13 @@ class EloquentRequestLogRepository implements RequestLogRepositoryInterface
             userId: (string)$model->user_id,    
             duration: (float)$model->duration,
             status: RequestStatus::fromStatusCode($model->status_code),
-            requestData: json_decode($model->request, true),
-            responseData: json_decode($model->response, true),
+            requestData: json_decode($model->request_data, true),
+            responseData: json_decode($model->response_data, true),
             headers: json_decode($model->headers, true),
             cookies: json_decode($model->cookies, true),
             session: json_decode($model->session, true),
             stackTrace: json_decode($model->stack_trace, true),
+            userAgent: $model->user_agent,
             createdAt: new DateTimeImmutable($model->created_at)
         );
     }
@@ -58,11 +71,14 @@ class EloquentRequestLogRepository implements RequestLogRepositoryInterface
         $stats = [
             'total_requests' => RequestLogModel::count(),
             'total_duration' => RequestLogModel::sum('duration'),
-            'total_errors' => RequestLogModel::where('status', 'error')->count(),
-            'total_redirects' => RequestLogModel::where('status', 'redirect')->count(),
-            'total_client_errors' => RequestLogModel::where('status', 'client_error')->count(),
-            'total_server_errors' => RequestLogModel::where('status', 'server_error')->count(),
-            'total_success' => RequestLogModel::where('status', 'success')->count(),
+            'total_errors' => RequestLogModel::where('status_code', '>=', 400)->count(),
+            'total_redirects' => RequestLogModel::where('status_code', 300)->count(),
+            'total_client_errors' => RequestLogModel::where('status_code', 400)->count(),
+            'total_server_errors' => RequestLogModel::where('status_code', 500)->count(),
+            'total_success' => RequestLogModel::where('status_code', '<', 400)->count(),
+            'avg_duration' => RequestLogModel::avg('duration'),
+            'success_rate' => RequestLogModel::where('status_code', '<', 400)->count() / RequestLogModel::count() * 100,
+            'error_rate' => RequestLogModel::where('status_code', '>=', 400)->count() / RequestLogModel::count() * 100,
         ];
         
         return $stats;
@@ -84,13 +100,14 @@ class EloquentRequestLogRepository implements RequestLogRepositoryInterface
                 userId: $model->user_id,
                 duration: $model->duration,
                 status: RequestStatus::fromStatusCode($model->status_code ?? 500),
-                requestData: $model->request,
-                responseData: $model->response,
+                requestData: json_decode($model->request_data, true),
+                responseData: json_decode($model->response_data, true),
                 headers: json_decode($model->headers, true),
                 cookies: json_decode($model->cookies, true),
                 session: json_decode($model->session, true),
                 stackTrace: json_decode($model->stack_trace, true),
                 createdAt: DateTimeImmutable::createFromInterface($model->created_at),
+                userAgent: $model->user_agent
             );
         })->toArray();
     }

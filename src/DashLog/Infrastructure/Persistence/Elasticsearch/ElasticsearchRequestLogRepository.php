@@ -36,6 +36,7 @@ class ElasticsearchRequestLogRepository implements RequestLogRepositoryInterface
                 'cookies' => $log->getCookies(),
                 'session' => $log->getSession(),
                 'stack_trace' => $log->getStackTrace(),
+                'user_agent' => $log->getUserAgent(),
                 'created_at' => $log->getCreatedAt()->format('Y-m-d H:i:s')
             ]
         ]);
@@ -155,7 +156,8 @@ class ElasticsearchRequestLogRepository implements RequestLogRepositoryInterface
             $data['cookies'],
             $data['session'],
             $data['stack_trace'],
-            new \DateTimeImmutable($data['created_at'])
+            $data['user_agent'],
+            $data['created_at']
         );
     }
 } 

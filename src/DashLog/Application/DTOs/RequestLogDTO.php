@@ -8,18 +8,19 @@ use Throwable;
 class RequestLogDTO
 {
     public function __construct(
-        public readonly string $method,
-        public readonly string $url,
-        public readonly string $ip,
-        public readonly ?string $userId,
-        public readonly float $duration,
-        public readonly int $statusCode,
-        public readonly ?array $requestData,
-        public readonly ?array $responseData,
-        public readonly ?array $headers,
-        public readonly ?array $cookies,
-        public readonly ?array $session,
-        public readonly ?array $stackTrace
+        public string $method,
+        public string $url,
+        public string $ip,
+        public ?string $userId,
+        public float $duration,
+        public int $statusCode,
+        public array $requestData,
+        public ?array $responseData,
+        public array $headers,
+        public array $cookies,
+        public array $session,
+        public ?array $stackTrace,
+        public string $userAgent,
     ) {}
 
     public static function fromRequest(Request $request, $response, float $duration, ?Throwable $exception = null): self
@@ -39,7 +40,8 @@ class RequestLogDTO
             headers: $config['headers'] ? self::sanitizeHeaders($request->headers->all()) : null,
             cookies: $config['cookies'] ? $request->cookies->all() : null,
             session: $config['session'] ? session()->all() : null,
-            stackTrace: $config['stack_trace'] && $exception ? self::formatStackTrace($exception) : null
+            stackTrace: $config['stack_trace'] && $exception ? self::formatStackTrace($exception) : null,
+            userAgent: $request->userAgent()
         );
     }
 

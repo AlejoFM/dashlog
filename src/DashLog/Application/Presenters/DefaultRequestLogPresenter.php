@@ -3,30 +3,40 @@
 namespace DashLog\Application\Presenters;
 
 use Carbon\Carbon;
+use DashLog\Domain\Entities\RequestLog;
 
 class DefaultRequestLogPresenter implements RequestLogPresenterInterface
 {
-    public function present(array $data): array
+    public function present(RequestLog $data): array
     {
-        return [
-            'id' => $data['id'] ?? null,
-            'method' => $data['method'],
-            'url' => $data['url'],
+        $presented = [
+            'id' => $data->getId() ?? null,
+            'method' => $data->getMethod(),
+            'url' => $data->getUrl(),
             'status' => [
-                'code' => $data['status_code'],
-                'text' => $this->getStatusText($data['status_code']),
-                'class' => $this->getStatusClass($data['status_code']),
+                'code' => $data->getStatus()->value,
+                'text' => $this->getStatusText(intval($data->getStatus()->value)),
+                'class' => $this->getStatusClass(intval($data->getStatus()->value)),
             ],
             'duration' => [
-                'raw' => $data['duration'],
-                'formatted' => $this->formatDuration($data['duration']),
+                'raw' => $data->getDuration(),
+                'formatted' => $this->formatDuration(duration: $data->getDuration()),
             ],
             'timestamp' => [
-                'raw' => $data['created_at'],
-                'formatted' => Carbon::parse($data['created_at'])->diffForHumans(),
+                'raw' => $data->getCreatedAt(),
+                'formatted' => Carbon::parse($data->getCreatedAt())->diffForHumans(),
             ],
             'details' => $this->formatDetails($data),
+            'user_agent' => $data->getUserAgent(),
+            'user_id' => $data->getUserId(),
+            'request' => $data->getRequestData(),
+            'response' => $data->getResponseData(),
+            'cookies' => $data->getCookies(),
+            'session' => $data->getSession(),
+            'headers' => $data->getHeaders(),
         ];
+
+        return $presented;
     }
 
     public function presentCollection(array $logs): array
@@ -37,7 +47,7 @@ class DefaultRequestLogPresenter implements RequestLogPresenterInterface
     public function presentStats(array $stats): array
     {
         return [
-            'total_requests' => number_format($stats['total_requests']),
+            'total_requests' => number_format(num: $stats['total_requests']),
             'average_duration' => $this->formatDuration($stats['avg_duration']),
             'success_rate' => [
                 'value' => $stats['success_rate'],
@@ -82,20 +92,20 @@ class DefaultRequestLogPresenter implements RequestLogPresenterInterface
         };
     }
 
-    private function formatDetails(array $data): array
+    private function formatDetails(RequestLog $data): array
     {
         $details = [];
 
-        if (!empty($data['request_data'])) {
-            $details['request'] = $data['request_data'];
+        if (!empty($data->getRequestData())) {
+            $details['request'] = $data->getRequestData();
         }
 
-        if (!empty($data['response_data'])) {
-            $details['response'] = $data['response_data'];
+        if (!empty($data->getResponseData())) {
+            $details['response'] = $data->getResponseData();
         }
 
-        if (!empty($data['stack_trace'])) {
-            $details['error'] = $data['stack_trace'];
+        if (!empty($data->getStackTrace())) {
+            $details['error'] = $data->getStackTrace();
         }
 
         return $details;
