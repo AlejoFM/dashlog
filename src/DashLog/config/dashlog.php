@@ -8,6 +8,20 @@ return [
 
     'enabled' => env('DASHLOG_ENABLED', true),
 
+    'exclude_paths' => [
+        'dashlog',
+        'dashlog/*',
+        '_debugbar/*',
+        '_ignition/*',
+        'horizon/*',
+        'sanctum/*',
+        '_tt/*',
+    ],
+
+    'middleware' => [
+        'log' => \DashLog\Infrastructure\Http\Middleware\RequestMonitorMiddleware::class,
+    ],
+
     'storage' => [
         'driver' => env('DASHLOG_STORAGE_DRIVER', 'mysql'),
         
@@ -54,5 +68,12 @@ return [
 
         'max_body_size' => env('DASHLOG_MAX_BODY_SIZE', 64000), // bytes
         'stack_trace_limit' => env('DASHLOG_STACK_TRACE_LIMIT', 20), // lines
+    ],
+
+    'ai_analysis' => [
+        'enabled' => env('DASHLOG_AI_ANALYSIS_ENABLED', false),
+        'aiml_api_key' => env('AIML_API_KEY'),
+        'provider' => env('DASHLOG_AI_PROVIDER', 'openai'),
+        'ai_model' => env('DASHLOG_AI_MODEL', 'gpt-4o-mini'),
     ],
 ]; 
