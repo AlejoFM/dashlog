@@ -23,7 +23,7 @@ return new class extends Migration
             $table->json('cookies')->nullable();
             $table->json('session')->nullable();
             $table->json('stack_trace')->nullable();
-            $table->json('user_agent')->nullable();
+            $table->text('user_agent')->nullable();
             $table->timestamps();
             $table->index('created_at');
             $table->index('status_code');
