@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "dashlog/dashlog",
+    "name": "aleddev/dashlog",
     "type": "library",
     "version": "1.0.0",
     "authors": [
@@ -10,7 +10,7 @@
         }
     ],
     "description": "A request monitoring and logging package for Laravel",
-    "keywords": ["laravel", "framework"],
+    "keywords": ["laravel", "framework", "logging", "monitoring", "request"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -72,6 +72,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
