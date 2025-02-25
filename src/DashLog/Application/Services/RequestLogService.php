@@ -30,7 +30,8 @@ class RequestLogService
             cookies: $dto->cookies,
             session: $dto->session,
             stackTrace: $dto->stackTrace,
-            createdAt: new \DateTimeImmutable()
+            createdAt: new \DateTimeImmutable(),
+            userAgent: $dto->userAgent
         );
 
         $this->repository->save($requestLog);
