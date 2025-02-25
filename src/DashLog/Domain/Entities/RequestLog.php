@@ -1,10 +1,10 @@
 <?php
 
-namespace DashLog\Domain\Entities;
+namespace AledDev\DashLog\Domain\Entities;
 
 use DateTimeImmutable;
-use DashLog\Domain\ValueObjects\RequestMethod;
-use DashLog\Domain\ValueObjects\RequestStatus;
+use AledDev\DashLog\Domain\ValueObjects\RequestMethod;
+use AledDev\DashLog\Domain\ValueObjects\RequestStatus;
 
 class RequestLog
 {

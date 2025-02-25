@@ -1,15 +1,15 @@
 <?php
 
-namespace DashLog\Infrastructure\Providers;
+namespace AledDev\DashLog\Infrastructure\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Infrastructure\Persistence\Eloquent\Repositories\EloquentRequestLogRepository;
-use DashLog\Infrastructure\Persistence\Elasticsearch\ElasticsearchRequestLogRepository;
-use DashLog\Application\Presenters\RequestLogPresenterInterface;
-use DashLog\Application\Presenters\DefaultRequestLogPresenter;
-use DashLog\Application\Presenters\JsonRequestLogPresenter;
-use DashLog\Infrastructure\Http\Middleware\RequestMonitorMiddleware;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Infrastructure\Persistence\Eloquent\Repositories\EloquentRequestLogRepository;
+use AledDev\DashLog\Infrastructure\Persistence\Elasticsearch\ElasticsearchRequestLogRepository;
+use AledDev\DashLog\Application\Presenters\RequestLogPresenterInterface;
+use AledDev\DashLog\Application\Presenters\DefaultRequestLogPresenter;
+use AledDev\DashLog\Application\Presenters\JsonRequestLogPresenter;
+use AledDev\DashLog\Infrastructure\Http\Middleware\RequestMonitorMiddleware;
 use Illuminate\Contracts\Http\Kernel;
 use OpenAI\Client;
 use Illuminate\Support\Facades\Route;
@@ -55,7 +55,7 @@ class DashLogServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \DashLog\Infrastructure\Console\Commands\SetupElasticsearchCommand::class
+                \AledDev\DashLog\Infrastructure\Console\Commands\SetupElasticsearchCommand::class
             ]);
         }
         $this->loadMigrationsFrom(__DIR__ . '/../Persistence/Migrations');

@@ -1,7 +1,7 @@
 <?php
 
-use DashLog\Infrastructure\Http\Controllers\DashLogController;
-use DashLog\Infrastructure\Http\Controllers\SettingsController;
+use AledDev\DashLog\Infrastructure\Http\Controllers\DashLogController;
+use AledDev\DashLog\Infrastructure\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->group(function () {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\Seeders;
+namespace AledDev\DashLog\Infrastructure\Persistence\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

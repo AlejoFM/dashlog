@@ -1,8 +1,8 @@
 <?php
 
-namespace DashLog\Domain\Contracts;
+namespace AledDev\DashLog\Domain\Contracts;
 
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 
 interface RequestLogRepositoryInterface
 {

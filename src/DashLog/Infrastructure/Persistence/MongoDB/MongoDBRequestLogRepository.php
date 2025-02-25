@@ -1,9 +1,9 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\MongoDB;
+namespace AledDev\DashLog\Infrastructure\Persistence\MongoDB;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 use MongoDB\Client;
 
 class MongoDBRequestLogRepository implements RequestLogRepositoryInterface

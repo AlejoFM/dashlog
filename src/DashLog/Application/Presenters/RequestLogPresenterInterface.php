@@ -1,8 +1,8 @@
 <?php
 
-namespace DashLog\Application\Presenters;
+namespace AledDev\DashLog\Application\Presenters;
 
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 
 interface RequestLogPresenterInterface
 {

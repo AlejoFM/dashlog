@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\Eloquent\Models;
+namespace AledDev\DashLog\Infrastructure\Persistence\Eloquent\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

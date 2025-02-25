@@ -1,12 +1,12 @@
 <?php
 
-namespace DashLog\Application\Services;
+namespace AledDev\DashLog\Application\Services;
 
-use DashLog\Application\DTOs\RequestLogDTO;
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
-use DashLog\Domain\ValueObjects\RequestMethod;
-use DashLog\Domain\ValueObjects\RequestStatus;
+use AledDev\DashLog\Application\DTOs\RequestLogDTO;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\ValueObjects\RequestMethod;
+use AledDev\DashLog\Domain\ValueObjects\RequestStatus;
 
 class RequestLogService
 {

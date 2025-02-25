@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Infrastructure\Console\Commands;
+namespace AledDev\DashLog\Infrastructure\Console\Commands;
 
 use Illuminate\Console\Command;
 use Elastic\Elasticsearch\ClientBuilder;
@@ -14,7 +14,7 @@ class SetupElasticsearchCommand extends Command
     {
         try {
             $client = ClientBuilder::create()
-                ->setHosts(['localhost:9200'])  // Simplificado a una string simple
+                ->setHosts(['localhost:9200'])
                 ->build();
 
             if (!$client->ping()) {

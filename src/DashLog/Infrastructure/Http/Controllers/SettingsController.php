@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Infrastructure\Http\Controllers;
+namespace AledDev\DashLog\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Domain\ValueObjects;
+namespace AledDev\DashLog\Domain\ValueObjects;
 
 enum RequestMethod: string
 {

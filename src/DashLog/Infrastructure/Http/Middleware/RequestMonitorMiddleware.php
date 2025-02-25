@@ -1,10 +1,10 @@
 <?php
-namespace DashLog\Infrastructure\Http\Middleware;
+namespace AledDev\DashLog\Infrastructure\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use DashLog\Application\Services\RequestLogService;
-use DashLog\Application\DTOs\RequestLogDTO;
+use AledDev\DashLog\Application\Services\RequestLogService;
+use AledDev\DashLog\Application\DTOs\RequestLogDTO;
 
 class RequestMonitorMiddleware
 {

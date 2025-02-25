@@ -1,5 +1,5 @@
 <?php
-namespace DashLog\Application\DTOs;
+namespace AledDev\DashLog\Application\DTOs;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

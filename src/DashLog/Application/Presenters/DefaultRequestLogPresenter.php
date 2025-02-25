@@ -1,9 +1,9 @@
 <?php
 
-namespace DashLog\Application\Presenters;
+namespace AledDev\DashLog\Application\Presenters;
 
 use Carbon\Carbon;
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 
 class DefaultRequestLogPresenter implements RequestLogPresenterInterface
 {

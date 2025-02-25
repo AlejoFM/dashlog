@@ -1,17 +1,17 @@
 <?php
 
-namespace DashLog\Infrastructure\Http\Controllers;
+namespace AledDev\DashLog\Infrastructure\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
 use Illuminate\Support\Facades\DB;
-use DashLog\Application\Presenters\RequestLogPresenterInterface;
-use DashLog\Domain\Entities\RequestLog;
-use DashLog\Domain\ValueObjects\RequestMethod;
-use DashLog\Domain\ValueObjects\RequestStatus;
+use AledDev\DashLog\Application\Presenters\RequestLogPresenterInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\ValueObjects\RequestMethod;
+use AledDev\DashLog\Domain\ValueObjects\RequestStatus;
 use DateTimeImmutable;
-use DashLog\Infrastructure\Http\Services\ErrorAnalyzer as ServicesErrorAnalyzer;
+use AledDev\DashLog\Infrastructure\Http\Services\ErrorAnalyzer as ServicesErrorAnalyzer;
 
 class DashLogController extends Controller
 {

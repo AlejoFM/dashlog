@@ -1,12 +1,12 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\Eloquent\Repositories;
+namespace AledDev\DashLog\Infrastructure\Persistence\Eloquent\Repositories;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
-use DashLog\Domain\ValueObjects\RequestMethod;
-use DashLog\Domain\ValueObjects\RequestStatus;
-use DashLog\Infrastructure\Persistence\Eloquent\Models\RequestLogModel;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\ValueObjects\RequestMethod;
+use AledDev\DashLog\Domain\ValueObjects\RequestStatus;
+use AledDev\DashLog\Infrastructure\Persistence\Eloquent\Models\RequestLogModel;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\Log;
 

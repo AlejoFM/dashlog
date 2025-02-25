@@ -1,9 +1,9 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\MySQL;
+namespace AledDev\DashLog\Infrastructure\Persistence\MySQL;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 use Illuminate\Support\Facades\DB;
 
 class MySQLRequestLogRepository implements RequestLogRepositoryInterface

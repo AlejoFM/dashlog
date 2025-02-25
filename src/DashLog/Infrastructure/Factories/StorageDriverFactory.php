@@ -1,12 +1,12 @@
 <?php
 
-namespace DashLog\Infrastructure\Factories;
+namespace AledDev\DashLog\Infrastructure\Factories;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Infrastructure\Persistence\Elasticsearch\ElasticsearchRequestLogRepository;
-use DashLog\Infrastructure\Persistence\MySQL\MySQLRequestLogRepository;
-use DashLog\Infrastructure\Persistence\MongoDB\MongoDBRequestLogRepository;
-use DashLog\Infrastructure\Persistence\Redis\RedisRequestLogRepository;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Infrastructure\Persistence\Elasticsearch\ElasticsearchRequestLogRepository;
+use AledDev\DashLog\Infrastructure\Persistence\MySQL\MySQLRequestLogRepository;
+use AledDev\DashLog\Infrastructure\Persistence\MongoDB\MongoDBRequestLogRepository;
+use AledDev\DashLog\Infrastructure\Persistence\Redis\RedisRequestLogRepository;
 use InvalidArgumentException;
 
 class StorageDriverFactory

@@ -1,6 +1,6 @@
 <?php
 
-namespace DashLog\Infrastructure\Http\Services;
+namespace AledDev\DashLog\Infrastructure\Http\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;

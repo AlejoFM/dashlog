@@ -1,9 +1,9 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\Elasticsearch;
+namespace AledDev\DashLog\Infrastructure\Persistence\Elasticsearch;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 use Elastic\Elasticsearch\Client;
 use Elastic\Elasticsearch\ClientBuilder;
 

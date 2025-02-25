@@ -1,9 +1,9 @@
 <?php
 
-namespace DashLog\Infrastructure\Persistence\Redis;
+namespace AledDev\DashLog\Infrastructure\Persistence\Redis;
 
-use DashLog\Domain\Contracts\RequestLogRepositoryInterface;
-use DashLog\Domain\Entities\RequestLog;
+use AledDev\DashLog\Domain\Contracts\RequestLogRepositoryInterface;
+use AledDev\DashLog\Domain\Entities\RequestLog;
 use Illuminate\Support\Facades\Redis;
 
 class RedisRequestLogRepository implements RequestLogRepositoryInterface
